@@ -27,5 +27,27 @@ module.exports = mongoose.model('User', userSchema) //users
 
 
 
+
+
+const bookSchema = mongoose.Schema( {
+    bookname: String,
+    authorname: String,
+   
+    
+    category: {
+        type: String,
+        enum: ["js", "java", "python"] 
+    },
+    price: Number,
+   
+}, { timestamps: true });
+
+module.exports = mongoose.model('user',bookSchema)
+
+
+
+
+
+
 // String, Number
 // Boolean, Object/json, array
