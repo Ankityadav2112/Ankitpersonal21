@@ -29,14 +29,20 @@ module.exports = mongoose.model('User', userSchema) //users
 
 
 
-const bookSchema = mongoose.Schema( {
+const bookSchema =new mongoose.Schema( {
+
     bookname: String,
+    
     authorname: String,
    
     
     category: {
         type: String,
         enum: ["js", "java", "python"] 
+    },
+    date :{
+        type : Date,
+        default : Date.now
     },
     price: Number,
    
