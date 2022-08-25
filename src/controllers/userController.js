@@ -12,7 +12,12 @@ const basicCode= async function(req, res) {
     res.send({ msg: "This is coming from controller (handler)"})
     }
 
+const commonHandler =async function(req,res,next){
+    console.log("I am inside the common route Handler ")
+     next()
+   // res.send({status:true,msg: "hi there"})
 
+}
 
 
 
@@ -44,3 +49,4 @@ const getUsersData= async function (req, res) {
 module.exports.createUser= createUser
 module.exports.getUsersData= getUsersData
 module.exports.basicCode= basicCode
+module.exports.commonHandler= commonHandler
