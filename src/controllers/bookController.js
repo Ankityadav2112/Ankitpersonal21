@@ -5,23 +5,23 @@ const publisherModel = require("../models/publisherModel")
 const createBook= async function (req, res) {
     let book = req.body
 
-    //3 a)
+   // 3 a)
     if(!book.author) {
         return res.send({status: false, msg: "author id is a mandatory field"})
     }
 
-    //3 b)
+    // // //3 b)
     let author = await authorModel.findById(book.author)
     if(!author) {
         return res.send({status: false, msg: "Author id is not valid"})
     }
 
-    //3 c)
+    // //3 c)
     if(!book.publisher) {
         return res.send({status: false, msg: "Publisher id is a mandatory field"})
     }
 
-    // 3 d)
+    // // 3 d)
     let publisher = await publisherModel.findById(book.publisher)
     if(!publisher) {
         return res.send({status: false, msg: "Publisher id is not valid"})
@@ -32,7 +32,7 @@ const createBook= async function (req, res) {
 }
 
 const getAllBooksWithCompleteDetails = async function (req, res) {
-    let allBooks = await bookModel.find().populate('author publisher')
+    let allBooks = await bookModel.find().populate(['author','publisher'])
     res.send({data: allBooks})
 
 }
@@ -50,7 +50,7 @@ const updateSpecificBooks = async function(req, res) {
     }
 
     let updatedBooks = await bookModel.updateMany({publisher : {$in: requiredPublisherIds}}, {isHardCover: true}, {new: true})
-    res.send({data: updatedBooks})
+    res.send({data: requiredPublisherIds })
 }
 
 module.exports.createBook= createBook
