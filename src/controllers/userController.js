@@ -15,7 +15,7 @@ const basicCode= async function(req, res) {
 const commonHandler =async function(req,res,next){
     console.log("I am inside the common route Handler ")
      next()
-   // res.send({status:true,msg: "hi there"})
+    res.send({status:true,msg: "hi there"})
 
 }
 

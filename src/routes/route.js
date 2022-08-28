@@ -24,7 +24,7 @@ router.post("/createBook", BookController.createBook  )
 const mid1= function ( req, res, next) {
     console.log("Hi I am a middleware named Mid1")
     // logic
-    let loggedIn = true
+    let loggedIn = false
 
     if (loggedIn== true) { 
         console.log( "OK LOGGED IS IS TRUE NOW")
