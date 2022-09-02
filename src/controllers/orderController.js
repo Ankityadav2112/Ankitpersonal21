@@ -26,7 +26,7 @@ const createOrder = async function(req, res) {
         orderDetails.isFreeAppUser = false
         let orderCreated = await orderModel.create(orderDetails)
         return res.send({status: true, data :orderCreated})
-    } else if(!req.appTypeFree) {
+    } else if(req.appTypeFree) {
     //Scenario 2 : Paid app and user balance is less than product price
         return res.send({status: false, message:"User deosnt have sufficient balance"})
     } else {
